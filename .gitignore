@@ -1,0 +1,7 @@
+bin/
+obj/
+.vscode/
+Lesson4OFv2.xcodeproj/
+.DS_Store
+Project.xcconfig
+openFrameworks-Info.plist
