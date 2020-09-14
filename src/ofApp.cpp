@@ -4,21 +4,44 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    c1.setSpeed(5);
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-
+void ofApp::update() {
+    c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
+    if (c1.getDirection() == 1)
+    {
+        if (c1.getX() + 60 >= ofGetWidth())
+        {
+            c1.setDirection(-1);
+        }
+        else
+        {
+            c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
+        }
+    }
+    else
+    {
+        if (c1.getX() <= 0)
+        {
+            c1.setDirection(1);
+        }
+        else
+        {
+            c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-    Car c1(0,0);
+    
     c1.draw();
 
-    Car c2(ofGetWidth()-60, ofGetHeight()-30);
+    c2.setX(ofGetWidth()-60);
+    c2.setY(ofGetHeight()-30);
     c2.draw();
 
 }
