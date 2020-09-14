@@ -1,5 +1,7 @@
 #include "ofApp.h"
 
+#include "Car.h"
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -12,6 +14,12 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
+    Car c1(0,0);
+    c1.draw();
+
+    Car c2(ofGetWidth()-60, ofGetHeight()-30);
+    c2.draw();
 
 }
 
