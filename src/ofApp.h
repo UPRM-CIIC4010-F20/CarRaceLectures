@@ -29,5 +29,7 @@ class ofApp : public ofBaseApp{
 
         const static int MAX_NUM_CARS = 10;
         vector<Car> cars;
+
+        int raceStatus; // 0 = race on  1 = race finished
 		
 };

@@ -4,6 +4,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    raceStatus = 0;
     int laneY = 0;
     for (int i=0; i<MAX_NUM_CARS; i++) {
         int nextSpeed = round(ofRandom(5))+1;
@@ -15,6 +16,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update() {
+    if (raceStatus == 1) return;
+
     for (int i=0; i<cars.size(); i++) {
 
         cars[i].setSpeed(round(ofRandom(5)));
@@ -42,6 +45,15 @@ void ofApp::update() {
                 cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
             }
         }
+    }
+
+    int j = 0;
+    while (j<cars.size() && cars[j].getX()+60 < ofGetWidth()) {
+        j++;
+    }
+    if (j<cars.size()) {
+        // We found a winner
+        raceStatus = 1;
     }
 }
 
