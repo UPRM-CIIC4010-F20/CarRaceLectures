@@ -9,6 +9,9 @@ private:
 
 public:
 
+    Car(int x, int y, int s, int d) {
+        xPos = x; yPos = y; speed = s; direction = d;
+    }
     Car(int x, int y) { xPos = x; yPos = y; speed = 0; direction = 1; }
     Car() { xPos = 0; yPos = 0; speed = 0; direction = 1; }
 

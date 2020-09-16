@@ -4,32 +4,43 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    int laneY = 0;
+    for (int i=0; i<MAX_NUM_CARS; i++) {
+        int nextSpeed = round(ofRandom(5))+1;
+        cars.push_back(Car(0, laneY, nextSpeed, 1));
+        laneY += 40;
+    }
     c1.setSpeed(5);
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-    c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
-    if (c1.getDirection() == 1)
-    {
-        if (c1.getX() + 60 >= ofGetWidth())
+    for (int i=0; i<cars.size(); i++) {
+
+        cars[i].setSpeed(round(ofRandom(5)));
+
+        cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
+        if (cars[i].getDirection() == 1)
         {
-            c1.setDirection(-1);
+            if (cars[i].getX() + 60 >= ofGetWidth())
+            {
+                cars[i].setDirection(-1);
+            }
+            else
+            {
+                cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
+            }
         }
         else
         {
-            c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
-        }
-    }
-    else
-    {
-        if (c1.getX() <= 0)
-        {
-            c1.setDirection(1);
-        }
-        else
-        {
-            c1.setX(c1.getX() + c1.getSpeed() * c1.getDirection());
+            if (cars[i].getX() <= 0)
+            {
+                cars[i].setDirection(1);
+            }
+            else
+            {
+                cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
+            }
         }
     }
 }
@@ -37,8 +48,11 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-    
-    c1.draw();
+    for (int i=0; i<cars.size(); i++) {
+        cars[i].draw();
+    }
+
+    //c1.draw();
 
     c2.setX(ofGetWidth()-60);
     c2.setY(ofGetHeight()-30);

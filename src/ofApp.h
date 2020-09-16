@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "ofMain.h"
 #include "Car.h"
 
@@ -24,5 +26,8 @@ class ofApp : public ofBaseApp{
 
         Car c1;
         Car c2;
+
+        const static int MAX_NUM_CARS = 10;
+        vector<Car> cars;
 		
 };
