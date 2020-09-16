@@ -8,7 +8,7 @@ void ofApp::setup(){
     int laneY = 0;
     for (int i=0; i<MAX_NUM_CARS; i++) {
         int nextSpeed = round(ofRandom(5))+1;
-        cars.push_back(Car(0, laneY, nextSpeed, 1));
+        cars.push_back(Car(0, laneY, nextSpeed, 1, ofColor(255,0,0)));
         laneY += 40;
     }
     c1.setSpeed(5);
@@ -19,8 +19,7 @@ void ofApp::update() {
     if (raceStatus == 1) return;
 
     for (int i=0; i<cars.size(); i++) {
-
-        cars[i].setSpeed(round(ofRandom(5)));
+        cars[i].setSpeed(round(ofRandom(3)));
 
         cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
         if (cars[i].getDirection() == 1)
@@ -55,6 +54,17 @@ void ofApp::update() {
         // We found a winner
         raceStatus = 1;
     }
+
+    int leaderPosition = 0;
+    for (int i=0; i<cars.size(); i++) {
+        cars[i].setColor(ofColor(255, 0, 0));
+        if (cars[i].getX() >= cars[leaderPosition].getX()) {
+            leaderPosition = i;
+        } 
+    }
+
+    cars[leaderPosition].setColor(ofColor(0,255,0));
+
 }
 
 //--------------------------------------------------------------
