@@ -1,17 +1,22 @@
 #include "ofApp.h"
 
-#include "Car.h"
+#include "PoliceCar.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     int laneHeight = 40;
     numLanes = floor(ofGetHeight() / laneHeight);
-    cars = new Car[numLanes];
+    cars = new Car*[numLanes];
     raceStatus = 0;
     int laneY = 0;
     for (int i=0; i<numLanes; i++) {
         int nextSpeed = round(ofRandom(5))+1;
-        cars[i]= Car(0, laneY, nextSpeed, 1, ofColor(255,0,0));
+        if (i%2==0) {
+            cars[i] = new Car(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
+        }
+        else {
+            cars[i] = new PoliceCar(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
+        }
         laneY += laneHeight;
     }
     c1.setSpeed(5);
@@ -22,35 +27,35 @@ void ofApp::update() {
     if (raceStatus == 1) return;
 
     for (int i=0; i < numLanes; i++) {
-        cars[i].setSpeed(round(ofRandom(3)));
+        cars[i]->setSpeed(round(ofRandom(3)));
 
-        cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
-        if (cars[i].getDirection() == 1)
+        cars[i]->setX(cars[i]->getX() + cars[i]->getSpeed() * cars[i]->getDirection());
+        if (cars[i]->getDirection() == 1)
         {
-            if (cars[i].getX() + 60 >= ofGetWidth())
+            if (cars[i]->getX() + 60 >= ofGetWidth())
             {
-                cars[i].setDirection(-1);
+                cars[i]->setDirection(-1);
             }
             else
             {
-                cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
+                cars[i]->setX(cars[i]->getX() + cars[i]->getSpeed() * cars[i]->getDirection());
             }
         }
         else
         {
-            if (cars[i].getX() <= 0)
+            if (cars[i]->getX() <= 0)
             {
-                cars[i].setDirection(1);
+                cars[i]->setDirection(1);
             }
             else
             {
-                cars[i].setX(cars[i].getX() + cars[i].getSpeed() * cars[i].getDirection());
+                cars[i]->setX(cars[i]->getX() + cars[i]->getSpeed() * cars[i]->getDirection());
             }
         }
     }
 
     int j = 0;
-    while (j< numLanes && cars[j].getX()+60 < ofGetWidth()) {
+    while (j< numLanes && cars[j]->getX()+60 < ofGetWidth()) {
         j++;
     }
     if (j< numLanes) {
@@ -60,13 +65,13 @@ void ofApp::update() {
 
     int leaderPosition = 0;
     for (int i=0; i< numLanes; i++) {
-        cars[i].setColor(ofColor(255, 0, 0));
-        if (cars[i].getX() >= cars[leaderPosition].getX()) {
+        cars[i]->setColor(ofColor(255, 0, 0));
+        if (cars[i]->getX() >= cars[leaderPosition]->getX()) {
             leaderPosition = i;
         } 
     }
 
-    cars[leaderPosition].setColor(ofColor(0,255,0));
+    cars[leaderPosition]->setColor(ofColor(0,255,0));
 
 }
 
@@ -74,14 +79,14 @@ void ofApp::update() {
 void ofApp::draw(){
 
     for (int i=0; i< numLanes; i++) {
-        cars[i].draw();
+        cars[i]->draw();
     }
 
     //c1.draw();
 
-    c2.setX(ofGetWidth()-60);
-    c2.setY(ofGetHeight()-30);
-    c2.draw();
+    // c2.setX(ofGetWidth()-60);
+    // c2.setY(ofGetHeight()-30);
+    // c2.draw();
 
 }
 

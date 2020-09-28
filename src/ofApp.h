@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "ofMain.h"
-#include "Car.h"
+#include "PoliceCar.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,7 +28,7 @@ class ofApp : public ofBaseApp{
         Car c2;
 
         const static int MAX_NUM_CARS = 10;
-        Car* cars;
+        Car** cars;
         int numLanes;
 
         int raceStatus; // 0 = race on  1 = race finished

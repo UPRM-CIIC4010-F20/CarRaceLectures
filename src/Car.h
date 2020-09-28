@@ -28,6 +28,6 @@ public:
     void setDirection(int d) { direction = d; }
     void setColor(ofColor c) { color = c; }
 
-    void draw();
+    virtual void draw();
 
 };
