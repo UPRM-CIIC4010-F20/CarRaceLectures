@@ -1,18 +1,24 @@
 #include "ofApp.h"
 
+#include "Car.h"
 #include "PoliceCar.h"
+#include "Truck.h"
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     int laneHeight = 40;
     numLanes = floor(ofGetHeight() / laneHeight);
-    cars = new Car*[numLanes];
+    cars = new Vehicle*[numLanes];
     raceStatus = 0;
     int laneY = 0;
     for (int i=0; i<numLanes; i++) {
         int nextSpeed = round(ofRandom(5))+1;
-        if (i%2==0) {
+        if (i%3==0) {
             cars[i] = new Car(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
+        }
+        else if (i%3==1) {
+           cars[i] = new Truck(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
         }
         else {
             cars[i] = new PoliceCar(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
