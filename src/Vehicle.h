@@ -1,7 +1,8 @@
 #pragma once
 #include "ofMain.h"
+#include "Raceable.h"
 
-class Vehicle {
+class Vehicle: public Raceable {
 private:
     int xPos;
     int yPos;
@@ -11,7 +12,7 @@ private:
 
 public:
 
-    Vehicle(int x, int y, int s, int d, ofColor c): color(c) {
+    Vehicle(int x, int y, int s, int d, ofColor c) {
         xPos = x; yPos = y; speed = s; direction = d;
     }
     Vehicle(int x, int y) { xPos = x; yPos = y; speed = 0; direction = 1; }

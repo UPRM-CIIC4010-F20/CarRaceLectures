@@ -3,29 +3,33 @@
 #include "Car.h"
 #include "PoliceCar.h"
 #include "Truck.h"
+#include "Dolphin.h"
 
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     int laneHeight = 40;
     numLanes = floor(ofGetHeight() / laneHeight);
-    cars = new Vehicle*[numLanes];
+    cars = new Raceable*[numLanes];
     raceStatus = 0;
     int laneY = 0;
     for (int i=0; i<numLanes; i++) {
         int nextSpeed = round(ofRandom(5))+1;
-        if (i%3==0) {
+        if (i%4==0) {
             cars[i] = new Car(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
         }
-        else if (i%3==1) {
+        else if (i%4==1) {
            cars[i] = new Truck(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
         }
-        else {
-            cars[i] = new PoliceCar(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
+        else if (i%4==2) {
+           cars[i] = new PoliceCar(0, laneY, nextSpeed, 1, ofColor(255, 0, 0));
+        }
+         else {
+            cars[i] = new Dolphin(0, laneY);
         }
         laneY += laneHeight;
     }
-    c1.setSpeed(5);
+    // c1.setSpeed(5);
 }
 
 //--------------------------------------------------------------

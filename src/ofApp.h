@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "ofMain.h"
-#include "PoliceCar.h"
+#include "Raceable.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,11 +24,11 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-        Car c1;
-        Car c2;
+        // Car c1;
+        // Car c2;
 
         const static int MAX_NUM_CARS = 10;
-        Vehicle** cars;
+        Raceable** cars;
         int numLanes;
 
         int raceStatus; // 0 = race on  1 = race finished
