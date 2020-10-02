@@ -1,0 +1,15 @@
+{
+    "editor.detectIndentation": false,
+    "folders": [
+		{
+			"path": "/Users/bvelez/Developer/openFrameeworks/macOS_11_0/apps/ciic4010-f20-lectures/Lesson4OF"
+		}
+	],
+	"settings": {
+		"c-cpp-flylint.clang.includes": [
+            "/Users/bvelez/Developer/openFrameeworks/macOS_11_0/apps/ciic4010-f20-lectures/Lesson4OFv2/src",
+            "/Users/bvelez/Developer/openFrameeworks/macOS_11_0/libs/openFrameworks",
+            "${workspaceRoot}"
+		]
+	}
+}
