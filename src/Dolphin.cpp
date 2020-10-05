@@ -35,3 +35,12 @@ string Dolphin::yell()
 {
     return "Some dolphin sound";
 }
+
+bool Dolphin::equals(Raceable* r)
+{
+
+    Dolphin * d = dynamic_cast<Dolphin*>(r);
+    if (d == NULL) return false;
+    return ( this->myX == d->myX);
+
+}

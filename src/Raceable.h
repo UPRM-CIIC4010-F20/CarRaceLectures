@@ -17,6 +17,8 @@ public:
     virtual void setDirection(int d) = 0;
     virtual void setColor(ofColor c) = 0;
 
+    virtual bool equals(Raceable* r) = 0;
+
     virtual void draw() = 0; // Pure virtual method
 
 };

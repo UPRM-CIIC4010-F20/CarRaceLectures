@@ -1,5 +1,15 @@
 #include "Truck.h"
 
+
+bool Truck::equals(Raceable* r)
+{
+
+    Truck * t = dynamic_cast<Truck*>(r);
+    if (t == NULL) return false;
+    return ( this->getX() == t->getX());  // Compare y also
+
+}
+
 void Truck::draw() {
 
     ofSetColor(this->getColor());

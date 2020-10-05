@@ -11,5 +11,6 @@ public:
     Truck(): Truck(0,0,0,1,ofColor(255,255,255)) {}
 
     virtual void draw();
+    virtual bool equals(Raceable* r);
 
 };

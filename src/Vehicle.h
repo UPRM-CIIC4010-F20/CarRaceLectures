@@ -32,4 +32,6 @@ public:
 
     virtual void draw() = 0; // Pure virtual method
 
+    virtual bool equals(Raceable* r) = 0;
+
 };

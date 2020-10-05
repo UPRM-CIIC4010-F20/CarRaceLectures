@@ -31,9 +31,12 @@ class Dolphin: public Raceable, public Animal {
     virtual void setColor(ofColor c) {};
 
     virtual void draw();
+    virtual bool equals(Raceable* r);
 
     // Animal class methods
     virtual void eat();
     virtual string yell();
+
+
 
 };

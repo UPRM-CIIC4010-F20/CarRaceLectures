@@ -17,3 +17,12 @@ void Car::draw()
     ofDrawCircle(getX() + 45, getY() + 25, 5);
 
 }
+
+bool Car::equals(Raceable* r)
+{
+
+    Car * c = dynamic_cast<Car*>(r);
+    if (c == NULL) return false;
+    return (this->isSedan == c->isSedan);
+
+}
