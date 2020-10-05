@@ -1,8 +1,9 @@
 #pragma once
 #include "ofMain.h"
 #include "Raceable.h"
+#include "Animal.h"
 
-class Dolphin: public Raceable {
+class Dolphin: public Raceable, public Animal {
 
     private:
     int myX;
@@ -13,6 +14,9 @@ class Dolphin: public Raceable {
     public:
 
     Dolphin(int x, int y);
+    Dolphin(int x, int y, ofImage i);
+    Dolphin(int x, int y, string pathname);
+\
 
     virtual int getX() { return myX; };
     virtual int getY() { return myY; };
@@ -27,5 +31,9 @@ class Dolphin: public Raceable {
     virtual void setColor(ofColor c) {};
 
     virtual void draw();
+
+    // Animal class methods
+    virtual void eat();
+    virtual string yell();
 
 };
